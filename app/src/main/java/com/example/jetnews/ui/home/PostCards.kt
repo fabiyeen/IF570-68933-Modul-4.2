@@ -47,6 +47,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -83,16 +85,12 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
             Text(post.title, style = MaterialTheme.typography.titleMedium)
             Row(Modifier.padding(top = 4.dp)) {
                 CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
-                    val textStyle = MaterialTheme.typography.bodyMedium
-                    Text(
-                        text = post.metadata.author.name,
-                        style = textStyle
-                    )
-                    Text(
-                        text = " - ${post.metadata.readTimeMinutes} min read",
-                        style = textStyle
-                    )
-                }
+                    IconButton(onClick = { openDialog = true }) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = stringResource(R.string.cd_show_fewer)
+                        )
+                    }
             }
         }
         CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
