@@ -143,11 +143,9 @@ fun PostCardPopular(
     modifier: Modifier = Modifier
 ) {
     Card(
-        colors = CardDefaults.cardColors(),
         shape = MaterialTheme.shapes.medium,
         modifier = modifier.size(280.dp, 240.dp),
-        onClick = { navigateToArticle(post.id) },
-        elevation = CardDefaults.elevatedCardElevation()
+        onClick = { navigateToArticle(post.id) }
     ) {
         Column {
 
