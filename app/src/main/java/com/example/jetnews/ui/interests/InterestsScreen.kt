@@ -176,7 +176,7 @@ private fun TopicItem(itemTitle: String, selected: Boolean, onToggle: () -> Unit
         Spacer(Modifier.weight(1f))
         Checkbox(
             checked = selected,
-            onCheckedChange = { onToggle() },
+            onCheckedChange = null,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
     }
