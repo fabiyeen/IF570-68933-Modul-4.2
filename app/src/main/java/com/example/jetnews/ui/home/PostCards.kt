@@ -60,7 +60,12 @@ import com.example.jetnews.ui.theme.JetnewsTheme
 fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
     var openDialog by remember { mutableStateOf(false) }
     Row(
-        Modifier.clickable { navigateToArticle(post.id) }
+        Modifier.clickable(
+            // R.string.action_read_article = "read article"
+            onClickLabel = stringResource(R.string.action_read_article)
+        ) {
+            navigateToArticle(post.id)
+        }
     ) {
         Image(
             painter = painterResource(post.imageThumbId),
@@ -91,12 +96,14 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
             }
         }
         CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
-            IconButton(onClick = { openDialog = true }) {
-                Icon(
-                    imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(R.string.cd_show_fewer)
-                )
-            }
+            Icon(
+                imageVector = Icons.Default.Close,
+                contentDescription = stringResource(R.string.cd_show_fewer),
+                modifier = Modifier
+                    .clickable { openDialog = true }
+                    .padding(12.dp)
+                    .size(24.dp)
+            )
         }
     }
     if (openDialog) {
