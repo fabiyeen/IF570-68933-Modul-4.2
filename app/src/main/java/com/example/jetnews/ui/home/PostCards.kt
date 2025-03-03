@@ -91,14 +91,12 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
             }
         }
         CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
-            Icon(
-                imageVector = Icons.Default.Close,
-                contentDescription = stringResource(R.string.cd_show_fewer),
-                modifier = Modifier
-                    .clickable { openDialog = true }
-                    .padding(12.dp)
-                    .size(24.dp)
-            )
+            IconButton(onClick = { openDialog = true }) {
+                Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = stringResource(R.string.cd_show_fewer)
+                )
+            }
         }
     }
     if (openDialog) {
