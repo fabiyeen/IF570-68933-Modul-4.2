@@ -86,11 +86,7 @@ fun ArticleScreen(
         topBar = {
             InsetAwareTopAppBar(
                 title = {
-                    Text(
-                        text = "Published in: ${post.publication?.name}",
-                        style = MaterialTheme.typography.titleSmall,
-                        color = LocalContentColor.current
-                    )
+                    // ...
                 },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
