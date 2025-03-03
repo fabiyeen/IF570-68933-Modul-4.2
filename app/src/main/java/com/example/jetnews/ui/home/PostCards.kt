@@ -142,9 +142,12 @@ fun PostCardPopular(
     navigateToArticle: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val readArticleLabel = stringResource(id = R.string.action_read_article)
     Card(
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier.size(280.dp, 240.dp),
+        modifier = modifier
+            .size(280.dp, 240.dp)
+            .semantics { onClick(label = readArticleLabel, action = null) },
         onClick = { navigateToArticle(post.id) }
     ) {
         Column {
